@@ -6,6 +6,8 @@ from matplotlib import pyplot as plt
 
 df = pd.read_csv("Churn_Modelling.csv")
 
+print(df.head(5))
+
 #either drop all columns that are not numerical or change them to numerical
 #also drop irrelivant columns
 df = df.set_index('CustomerId')
@@ -47,7 +49,7 @@ cluster_model.fit(df)
 clusters = cluster_model.predict(df)
 clusters_column = pd.DataFrame(clusters, index=df.index, columns=["Cluster"])
 clusters_df = clusters_column.join(df)
-print(clusters_df.head(20))
+print(clusters_df.head(50))
 
 num_per_cluster = pd.DataFrame(clusters_df['Cluster'].value_counts())
 print(num_per_cluster)
